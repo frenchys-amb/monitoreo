@@ -21,8 +21,8 @@ function DataDisplay({ data }) {
         <tbody>
           {data.map((item, index) => (
             <tr key={index}>
-              {Object.values(item).map((value, index) => (
-                <td key={index} className="border px-4 py-2">{JSON.stringify(value)}</td>
+              {Object.values(item).map((value, subIndex) => (
+                <td key={subIndex} className="border px-4 py-2">{JSON.stringify(value)}</td>
               ))}
             </tr>
           ))}
@@ -45,7 +45,7 @@ export default function DataViewer() {
 
   async function fetchData() {
     try {
-      let table = "formqr/medication_schedule"; // Ruta a la tabla Medication_schedule
+      const table = dataType.toLowerCase(); // Usa el valor de dataType para determinar la tabla
       const { data: fetchedData, error } = await supabase.from(table).select("*");
       if (error) {
         throw error;
