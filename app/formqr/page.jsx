@@ -1,5 +1,5 @@
-'use client';
-
+'use client',
+  
 import React, { useState, useEffect } from 'react';
 import { createClient } from '../utils/supabase/client';
 
@@ -105,15 +105,21 @@ export default function Medication() {
             />
           </div>
           <div className="mb-4 text-black">
-            <input
+            <label htmlFor="medication" className="block mb-2">Select Medication</label>
+            <select
               id="medication"
-              type="text"
               value={formData.medication}
               onChange={(e) => setFormData({ ...formData, medication: e.target.value })}
-              placeholder="Enter medication"
               className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
               required
-            />
+            >
+              <option value="">Select Medication</option>
+              {medicationData.map((medication) => (
+                <option key={medication.id} value={medication.name}>
+                  {medication.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="mb-4 text-black">
             <input
