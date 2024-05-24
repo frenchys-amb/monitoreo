@@ -1,6 +1,5 @@
 'use client'
-  
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import { createClient } from '../utils/supabase/client';
 
 export default function Medication() {
@@ -25,29 +24,26 @@ export default function Medication() {
 
   async function addItem() {
     try {
-      // Fetch current amount of the specified medication
-      const { data: medication, error: fetchError } = await supabase
-        .from('medication')
-        .select('amount')
-        .eq('name', formData.medication)
-        .single();
-      if (fetchError) throw fetchError;
-
-      // Calculate new amount
-      const newAmount = medication.amount - formData.amount;
-      if (newAmount < 0) {
-        alert('Insufficient medication amount available!');
+      // Verificar si el medicamento seleccionado está en la lista manual
+      const manualMedications = [
+        "Solumebrol",
+        "Atropina",
+        "Epinefrina 1:10,000",
+        "Toradol",
+        "Etomidato",
+        "Flumazenil",
+        "Adenosina",
+        "Enlaprile",
+        "Amiodarone",
+        "Plvix",
+        "Dexamethasone"
+      ];
+      if (!manualMedications.includes(formData.medication)) {
+        alert('Please select a medication from the list.');
         return;
       }
 
-      // Update the medication amount in the 'medication' table
-      const { error: updateError } = await supabase
-        .from('medication')
-        .update({ amount: newAmount })
-        .eq('name', formData.medication);
-      if (updateError) throw updateError;
-
-      // Insert new item into the 'medication_schedule' table
+      // Insertar el nuevo elemento en la tabla 'medication_schedule'
       const { error: insertError } = await supabase
         .from('medication_schedule')
         .insert([formData]);
@@ -117,12 +113,7 @@ export default function Medication() {
               required
             >
               <option value="">Select Medication</option>
-              {medicationData.map((medication) => (
-                <option key={medication.id} value={medication.name}>
-                  {medication.name}
-                </option>
-              ))}
-              {/* Adding manually */}
+              {/* Manual medication options */}
               <option value="Solumebrol">Solumebrol</option>
               <option value="Atropina">Atropina</option>
               <option value="Epinefrina 1:10,000">Epinefrina 1:10,000</option>
