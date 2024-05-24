@@ -7,50 +7,44 @@ import Report from "../components/report";
 import Dashboard from "../components/dashboard";
 
 export default function Home() {
-  const [showInventoryMenu, setShowInventoryMenu] = useState(false);
-  const [activeForm, setActiveForm] = useState(null);
   const [showAddStorage, setShowAddStorage] = useState(false);
+  const [showAddMedication, setShowAddMedication] = useState(false);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
   const [activeComponent, setActiveComponent] = useState("Home");
 
   const handleToggleAddStorageForm = () => {
-    setActiveForm("storage");
     setShowWelcomeMessage(false);
     setShowAddStorage(true);
-  };
-
-  const handleToggleAddMedicineForm = () => {
-    setActiveForm("medication");
-    setShowWelcomeMessage(false);
+    setShowAddMedication(false);
     setActiveComponent("Storage");
   };
 
-  const handleToggleInventoryMenu = () => {
-    setShowInventoryMenu(!showInventoryMenu);
+  const handleToggleAddMedicationForm = () => {
     setShowWelcomeMessage(false);
-    setActiveComponent(null);
+    setShowAddStorage(false);
+    setShowAddMedication(true);
+    setActiveComponent("Medication");
   };
 
   const handleToggleDashboard = () => {
     setShowWelcomeMessage(true);
-    setActiveForm(null);
+    setShowAddStorage(false);
+    setShowAddMedication(false);
     setActiveComponent("Home");
   };
 
   const handleToggleReport = () => {
     setShowWelcomeMessage(true);
-    setActiveForm(null);
+    setShowAddStorage(false);
+    setShowAddMedication(false);
     setActiveComponent("report");
   };
 
-
   const handleAgregarAlmacen = (data) => {
-    
     console.log("Data:", data);
   };
 
   const handleAgregarMedicamento = (data) => {
-   
     console.log("Medication Data:", data);
   };
 
@@ -76,34 +70,20 @@ export default function Home() {
                 </li>
                 <li>
                   <button
-                    className="py-2 text-lg"
-                    onClick={handleToggleInventoryMenu}
+                    className="py-2 text-lg text-white"
+                    onClick={handleToggleAddStorageForm}
                   >
-                    Inventory
+                    Storage
                   </button>
                 </li>
-                {showInventoryMenu && (
-                  <div>
-                    <ul>
-                      <li>
-                        <button
-                          className="py-2 text-blue-700"
-                          onClick={handleToggleAddStorageForm}
-                        >
-                          Storage
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="py-2 text-orange-700"
-                          onClick={handleToggleAddMedicineForm}
-                        >
-                          Medication
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                )}
+                <li>
+                  <button
+                    className="py-2 text-lg text-white"
+                    onClick={handleToggleAddMedicationForm}
+                  >
+                    Medication
+                  </button>
+                </li>
                 <li>
                   <button
                     className="py-2 text-lg text-green-700"
@@ -125,10 +105,10 @@ export default function Home() {
             }}
           >
             <div className="container mx-auto text-white">
-              {activeForm === "storage" && showAddStorage && (
+              {showAddStorage && (
                 <AddStorage onAgregarAlmacen={handleAgregarAlmacen} />
               )}
-              {activeForm === "medication" && showInventoryMenu && (
+              {showAddMedication && (
                 <AddMxStorage onAgregarMedicamento={handleAgregarMedicamento} />
               )}
               {activeComponent === "Home" && <Dashboard />}
