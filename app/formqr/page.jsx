@@ -1,5 +1,4 @@
 'use client',
-  
 import React, { useState, useEffect } from 'react';
 import { createClient } from '../utils/supabase/client';
 
@@ -72,6 +71,7 @@ export default function Medication() {
           }}
         >
           <div className="mb-4 text-black">
+            <label htmlFor="name" className="block mb-2">Name</label>
             <input
               id="name"
               type="text"
@@ -83,6 +83,7 @@ export default function Medication() {
             />
           </div>
           <div className="mb-4 text-black">
+            <label htmlFor="license" className="block mb-2">License</label>
             <input
               id="license"
               type="text"
@@ -94,6 +95,7 @@ export default function Medication() {
             />
           </div>
           <div className="mb-4 text-black">
+            <label htmlFor="unit" className="block mb-2">Unit</label>
             <input
               id="unit"
               type="text"
@@ -119,9 +121,13 @@ export default function Medication() {
                   {medication.name}
                 </option>
               ))}
+              {/* Adding manually */}
+              <option value="Solumebrol">Solumebrol</option>
+              <option value="Atropina">Atropina</option>
             </select>
           </div>
           <div className="mb-4 text-black">
+            <label htmlFor="amount" className="block mb-2">Amount</label>
             <input
               id="amount"
               type="number"
