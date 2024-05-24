@@ -71,7 +71,7 @@ export default function Medication() {
             e.preventDefault();
           }}
         >
-          <div className="mb-4 text-black">
+          <div className="mb-4 text-white">
             <label htmlFor="name" className="block mb-2">Name</label>
             <input
               id="name"
@@ -83,7 +83,7 @@ export default function Medication() {
               required
             />
           </div>
-          <div className="mb-4 text-black">
+          <div className="mb-4 text-white">
             <label htmlFor="license" className="block mb-2">License</label>
             <input
               id="license"
@@ -95,7 +95,7 @@ export default function Medication() {
               required
             />
           </div>
-          <div className="mb-4 text-black">
+          <div className="mb-4 text-white">
             <label htmlFor="unit" className="block mb-2">Unit</label>
             <input
               id="unit"
@@ -107,7 +107,7 @@ export default function Medication() {
               required
             />
           </div>
-          <div className="mb-4 text-black">
+          <div className="mb-4 text-white">
             <label htmlFor="medication" className="block mb-2">Select Medication</label>
             <select
               id="medication"
@@ -125,9 +125,18 @@ export default function Medication() {
               {/* Adding manually */}
               <option value="Solumebrol">Solumebrol</option>
               <option value="Atropina">Atropina</option>
+              <option value="Epinefrina 1:10,000">Epinefrina 1:10,000</option>
+              <option value="Toradol">Toradol</option>
+              <option value="Etomidato">Etomidato</option>
+              <option value="Flumazenil">Flumazenil</option>
+              <option value="Adenosina">Adenosina</option>
+              <option value="Enlaprile">Enlaprile</option>
+              <option value="Amiodarone">Amiodarone</option>
+              <option value="Plvix">Plavix</option>
+              <option value="Dexamethasone">Dexamethasone</option>
             </select>
           </div>
-          <div className="mb-4 text-black">
+          <div className="mb-4 text-white">
             <label htmlFor="amount" className="block mb-2">Amount</label>
             <input
               id="amount"
