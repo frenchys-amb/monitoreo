@@ -1,5 +1,6 @@
 'use client'
- import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { createClient } from '../utils/supabase/client';
 
 export default function Medication() {
@@ -75,7 +76,7 @@ export default function Medication() {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="Enter name"
-              className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
+              className="w-full px-3 py-2 placeholder-gray-400 text-black border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
               required
             />
           </div>
@@ -87,7 +88,7 @@ export default function Medication() {
               value={formData.license}
               onChange={(e) => setFormData({ ...formData, license: e.target.value })}
               placeholder="Enter license"
-              className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
+              className="w-full px-3 py-2 placeholder-gray-400 text-black border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
               required
             />
           </div>
@@ -99,7 +100,7 @@ export default function Medication() {
               value={formData.unit}
               onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
               placeholder="Enter unit"
-              className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
+              className="w-full px-3 py-2 placeholder-gray-400 text-black border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
               required
             />
           </div>
@@ -109,7 +110,7 @@ export default function Medication() {
               id="medication"
               value={formData.medication}
               onChange={(e) => setFormData({ ...formData, medication: e.target.value })}
-              className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
+              className="w-full px-3 py-2 placeholder-gray-400 text-black border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
               required
             >
               <option value="">Select Medication</option>
@@ -135,7 +136,7 @@ export default function Medication() {
               value={formData.amount}
               onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
               placeholder="Enter amount"
-              className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
+              className="w-full px-3 py-2 placeholder-gray-400 text-black border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
               required
             />
           </div>
