@@ -147,7 +147,7 @@ export default function Medication() {
               <option value="Adenosina">Adenosina</option>
               <option value="Enlaprile">Enlaprile</option>
               <option value="Amiodarone">Amiodarone</option>
-              <option value="Plvix">Plavix</option>
+              <option value="Plavix">Plavix</option>
               <option value="Dexamethasone">Dexamethasone</option>
             </select>
           </div>
