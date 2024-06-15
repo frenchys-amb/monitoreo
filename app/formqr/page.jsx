@@ -25,7 +25,6 @@ export default function Medication() {
 
   async function addItem() {
     try {
-      // Verificar si el medicamento seleccionado está en la lista manual
       const manualMedications = [
         "Solumebrol",
         "Atropina",
@@ -44,7 +43,31 @@ export default function Medication() {
         return;
       }
 
-      // Insertar el nuevo elemento en la tabla 'medication_schedule'
+      const amountToReduce = parseInt(formData.amount);
+      if (isNaN(amountToReduce) || amountToReduce <= 0) {
+        alert('Please enter a valid amount.');
+        return;
+      }
+
+      const { data: existingData, error: fetchError } = await supabase
+        .from('medication_schedule')
+        .select('amount')
+        .eq('medication', formData.medication)
+        .single();
+      if (fetchError) throw fetchError;
+
+      const updatedAmount = existingData.amount - amountToReduce;
+      if (updatedAmount < 0) {
+        alert('Not enough medication available to reduce the specified amount.');
+        return;
+      }
+
+      const { error: updateError } = await supabase
+        .from('medication_schedule')
+        .update({ amount: updatedAmount })
+        .eq('medication', formData.medication);
+      if (updateError) throw updateError;
+
       const { error: insertError } = await supabase
         .from('medication_schedule')
         .insert([formData]);
