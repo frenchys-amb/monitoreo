@@ -26,7 +26,7 @@ export default function Medication() {
   async function addItem() {
     try {
       const manualMedications = [
-        "Solumebrol",
+        "Solumedrol",
         "Atropina",
         "Epinefrina 1:10,000",
         "Toradol",
@@ -138,7 +138,7 @@ export default function Medication() {
             >
               <option value="">Select Medication</option>
               {/* Manual medication options */}
-              <option value="Solumebrol">Solumebrol</option>
+              <option value="Solumedrol">Solumedrol</option>
               <option value="Atropina">Atropina</option>
               <option value="Epinefrina 1:10,000">Epinefrina 1:10,000</option>
               <option value="Toradol">Toradol</option>
