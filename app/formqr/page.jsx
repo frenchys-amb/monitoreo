@@ -36,7 +36,7 @@ export default function Medication() {
       }
 
       const amountToReduce = parseInt(formData.amount);
-      if (isNaN(amountToReduce) || amountToReduce <= 0) {
+      if (isNaN(amountToReduce) || amountToReduce < 0) {
         alert('Please enter a valid amount.');
         return;
       }
@@ -164,6 +164,7 @@ export default function Medication() {
             >
               <option value="">Select amount</option>
               {/* Manual unidad options */}
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
